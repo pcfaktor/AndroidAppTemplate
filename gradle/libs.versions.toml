@@ -26,6 +26,9 @@ splashscreen = "1.0.1"
 junit = "4.13.2"
 testExtJunit = "1.1.5"
 espresso = "3.5.1"
+junit5Plugin = "1.9.3.0"
+spek = "2.0.19"
+kotlinTestCoroutines = "1.7.3"
 composeUiTestManifest = "1.5.0"
 composeDetektRules = "0.0.26"
 retrofit = "2.9.0"
@@ -71,6 +74,10 @@ androidx-test-espresso-core = { module = "androidx.test.espresso:espresso-core",
 androidx-compose-ui-test-junit4 = { module = "androidx.compose.ui:ui-test-junit4" }
 androidx-compose-ui-tooling = { module = "androidx.compose.ui:ui-tooling" }
 androidx-compose-ui-test-manifest = { module = "androidx.compose.ui:ui-test-manifest", version.ref = "composeUiTestManifest" }
+org-spekframework-spek2-dsl-jvm = { module = "org.spekframework.spek2:spek-dsl-jvm", version.ref = "spek" }
+org-spekframework-spek2-runner-junit5 = { module = "org.spekframework.spek2:spek-runner-junit5", version.ref = "spek" }
+org-jetbrains-kotlin-reflect = { module = "org.jetbrains.kotlin:kotlin-reflect", version.ref = "kotlinAndroidPlugin" }
+org-jetbrains-kotlinx-coroutines-test = {module ="org.jetbrains.kotlinx:kotlinx-coroutines-test",version = "kotlinTestCoroutines"}
 
 
 [plugins]
@@ -84,3 +91,4 @@ detekt = { id = "io.gitlab.arturbosch.detekt", version.ref = "detektPlugin" }
 detekt-formatting = { id = "io.gitlab.arturbosch.detekt:detekt-formatting", version.ref = "detektPlugin" }
 compose-rules-detekt = { id = "com.twitter.compose.rules:detekt", version.ref = "composeDetektRules" }
 hilt-android = { id = "com.google.dagger.hilt.android", version.ref = "hilt" }
+android-junit5 = { id = "de.mannodermaus.android-junit5", version.ref = "junit5Plugin" }

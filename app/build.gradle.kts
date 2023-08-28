@@ -6,6 +6,7 @@ plugins {
     alias(libs.plugins.hilt.android)
     alias(libs.plugins.kotlin.kapt)
     alias(libs.plugins.devtools.ksp)
+    alias(libs.plugins.android.junit5)
 }
 
 android {
@@ -70,6 +71,26 @@ android {
             excludes += "/META-INF/{AL2.0,LGPL2.1}"
         }
     }
+    testOptions {
+        junitPlatform {
+            filters {
+                includeEngines("spek2")
+            }
+            jacocoOptions {
+                // here goes all jacoco config, for example
+                html.enabled = true
+                xml.enabled = false
+                csv.enabled = false
+            }
+        }
+        unitTests.all { test ->
+            test.testLogging.events = setOf(
+                org.gradle.api.tasks.testing.logging.TestLogEvent.PASSED,
+                org.gradle.api.tasks.testing.logging.TestLogEvent.SKIPPED,
+                org.gradle.api.tasks.testing.logging.TestLogEvent.FAILED
+            )
+        }
+    }
 }
 
 kapt {
@@ -116,4 +137,8 @@ dependencies {
     androidTestImplementation(libs.androidx.compose.ui.test.junit4)
     debugImplementation(libs.androidx.compose.ui.tooling)
     debugImplementation(libs.androidx.compose.ui.test.manifest)
+    testImplementation(libs.org.spekframework.spek2.dsl.jvm)
+    testImplementation(libs.org.spekframework.spek2.runner.junit5)
+    testImplementation(libs.org.jetbrains.kotlin.reflect)
+    testImplementation(libs.org.jetbrains.kotlinx.coroutines.test)
 }
